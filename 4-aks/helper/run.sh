@@ -1,0 +1,1 @@
+az aks get-credentials -g matrix-dev-k8s -n matrix-aks-dev

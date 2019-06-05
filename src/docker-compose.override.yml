@@ -1,0 +1,28 @@
+version: '3.4'
+
+services:
+  dutchazuremeetup.webapi:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DutchAzureMeetupContext=Ser;
+    expose:
+      - "80"
+    ports:
+      - "5000:80"
+    networks:
+      - isolated
+
+  dutchazuremeetup.webapp:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - BackendUri=http://dutchazuremeetup.webapi
+    expose:
+      - "80"
+    ports:
+      - "80:80"
+    networks:
+      - isolated
+
+networks:
+  isolated:
+    driver: bridge

@@ -1,0 +1,17 @@
+version: '3.4'
+
+services:
+  dutchazuremeetup.webapi:
+    image: ${DOCKER_REGISTRY-}dutchazuremeetupwebapi:latest    
+    build:
+      context: .
+      dockerfile: DutchAzureMeetup.WebApi/Dockerfile
+
+  dutchazuremeetup.webapp:
+    image: ${DOCKER_REGISTRY-}dutchazuremeetupwebapp:latest 
+    depends_on:
+      - dutchazuremeetup.webapi
+    build:
+      context: .
+      dockerfile: DutchAzureMeetup.WebApp/Dockerfile
+
